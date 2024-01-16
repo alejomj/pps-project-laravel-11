@@ -36,7 +36,7 @@
                         <div class="flex justify-between items-center">
                             <div>
                                 <span class="text-gray-800 dark:text-gray-200">
-                                    {{ $pps->user }}
+                                    {{ $pps->user->name }}
                                 </span>
                                 <small class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ $pps->created_at->diffForHumans() }}</small>
                                 @unless($pps->created_at->eq($pps->updated_at))

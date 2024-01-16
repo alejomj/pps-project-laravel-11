@@ -12,7 +12,7 @@ class PpsController extends Controller
      */
     public function index()
     {
-        return view('pps.index', ['ppspps' => Pps::latest()->get()]); //ordeby('created_at', 'desc')
+        return view('pps.index', ['ppspps' => Pps::with('user')->latest()->get()]); //ordeby('created_at', 'desc')
     }
 
     /**
