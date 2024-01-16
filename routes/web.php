@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PpsController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Pps;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,20 +23,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/pps', function () {
-        return view('pps.index');
-    })->name('pps.index');
+    Route::get('/pps', [PpsController::class, 'index'])->name('pps.index');
 
-    Route::post('/pps', function () {
-        Pps::create([
-            'message' => request('message'),
-            'user_id' => auth()->id(),
-        ]);
-
-        // session()->flash('status');
-
-        return to_route('pps.index')->with('status','Pps sent');
-    })->name('pps.store');
+    Route::post('/pps', [PpsController::class, 'store'])->name('pps.store');
     
     Route::get('/pps/{pps}', function ($pps = null) {
         if ($pps === '-1') {

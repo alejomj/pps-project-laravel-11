@@ -12,7 +12,7 @@ class PpsController extends Controller
      */
     public function index()
     {
-        //
+        return view('pps.index');
     }
 
     /**
@@ -28,7 +28,14 @@ class PpsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Pps::create([
+            'message' => $request->get('message'),
+            'user_id' => auth()->id(),
+        ]);
+
+        // session()->flash('status');
+
+        return to_route('pps.index')->with('status','Pps sent');
     }
 
     /**
