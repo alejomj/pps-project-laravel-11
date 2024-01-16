@@ -47,7 +47,7 @@
                         </div>
                         <p class="mt-4 text-lg text-gray-900 dark:text-gray-100">{{ $pps->message }}</p>
                     </div>
-                    
+                    @can('update', $pps)
                         <x-dropdown>
                             <x-slot name="trigger">
                                 <button>
@@ -69,7 +69,7 @@
 
                             </x-slot>
                         </x-dropdown>
-                    
+                    @endcan
 
                 </div>
             @endforeach

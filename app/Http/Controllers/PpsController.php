@@ -51,6 +51,7 @@ class PpsController extends Controller
      */
     public function edit(Pps $pps)
     {
+        $this->authorize('update', $pps);
         return view('pps.edit', [
             'pps' => $pps,
         ]);
@@ -61,6 +62,7 @@ class PpsController extends Controller
      */
     public function update(Request $request, Pps $pps)
     {
+        $this->authorize('update', $pps);
         $validated = $request->validate([
             'message' => ['required', 'min:3', 'max:255'],
         ]);
