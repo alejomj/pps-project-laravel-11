@@ -28,6 +28,10 @@ class PpsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'message' => ['required', 'min:3', 'max:255'],
+        ]);
+
         Pps::create([
             'message' => $request->get('message'),
             'user_id' => auth()->id(),
