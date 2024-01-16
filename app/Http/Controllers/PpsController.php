@@ -28,15 +28,11 @@ class PpsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'message' => ['required', 'min:3', 'max:255'],
         ]);
 
-        Pps::create([
-            'message' => $request->get('message'),
-            'user_id' => auth()->id(),
-        ]);
-
+        $request->user()->ppspps()->create($validated);
         // session()->flash('status');
 
         return to_route('pps.index')->with('status','Pps sent');
