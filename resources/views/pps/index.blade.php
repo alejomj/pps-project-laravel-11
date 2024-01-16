@@ -47,7 +47,7 @@
                         </div>
                         <p class="mt-4 text-lg text-gray-900 dark:text-gray-100">{{ $pps->message }}</p>
                     </div>
-                    @can('update', $pps)
+                    
                         <x-dropdown>
                             <x-slot name="trigger">
                                 <button>
@@ -57,19 +57,19 @@
                                 </button>
                             </x-slot>
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('pps.edit', $chirp)">
+                                <x-dropdown-link :href="route('pps.edit', $pps)">
                                     {{ __('Edit Pps') }}
                                 </x-dropdown-link>
-                                <form method="POST" action="{{ route('pps.destroy', $chirp) }}">
+                                <form method="POST" action="{{ route('pps.edit', $pps) }}">
                                     @csrf @method('DELETE')
-                                    <x-dropdown-link :href="route('pps.destroy', $chirp)" onclick="event.preventDefault(); this.closest('form').submit();">
-                                        {{ __('Delete Chirp') }}
+                                    <x-dropdown-link :href="route('pps.edit', $pps)" onclick="event.preventDefault(); this.closest('form').submit();">
+                                        {{ __('Delete Pps') }}
                                     </x-dropdown-link>
                                 </form>
 
                             </x-slot>
                         </x-dropdown>
-                    @endcan
+                    
 
                 </div>
             @endforeach

@@ -21,7 +21,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('pps.index')" :active="request()->routeIs('pps.index')">
+                    <x-nav-link :href="route('pps.index')" :active="request()->routeIs('pps.*')">
                         {{ __('PpsPps') }}
                     </x-nav-link>
                 </div>
@@ -79,7 +79,7 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('pps.index')" :active="request()->routeIs('pps.index')">
+            <x-responsive-nav-link :href="route('pps.index')" :active="request()->routeIs('pps.*')">
                 {{ __('PpsPps') }}
             </x-responsive-nav-link>
         </div>

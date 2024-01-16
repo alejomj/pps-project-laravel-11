@@ -30,14 +30,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/pps', [PpsController::class, 'index'])->name('pps.index');
 
     Route::post('/pps', [PpsController::class, 'store'])->name('pps.store');
-    
-    Route::get('/pps/{pps}', function ($pps = null) {
-        if ($pps === '-1') {
-            //return redirect('/');
-            return to_route('pps.index'); //redirect()->route('pps.index');
-        }
-        return 'pps> '.$pps;
-    });
+
+    Route::get('/pps/{pps}/edit', [PpsController::class, 'edit'])
+        ->name('pps.edit');  
+
+    Route::put('/pps/{pps}/update', [PpsController::class, 'update'])
+        ->name('pps.update');
     
 });
 
