@@ -28,11 +28,14 @@ Route::middleware('auth')->group(function () {
     })->name('pps.index');
 
     Route::post('/pps', function () {
-        $message = request('message');
         Pps::create([
-            'message' => $message,
+            'message' => request('message'),
             'user_id' => auth()->id(),
         ]);
+
+        // session()->flash('status');
+
+        return to_route('pps.index')->with('status','Pps sent');
     })->name('pps.store');
     
     Route::get('/pps/{pps}', function ($pps = null) {

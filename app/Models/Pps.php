@@ -10,5 +10,6 @@ class Pps extends Model
     use HasFactory;
     protected $fillable = [
         'message',
+        'user_id', 
     ];
 }
