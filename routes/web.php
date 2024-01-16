@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Pps;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/pps', function () {
-        return 'test pps pps';
+        return view('pps.index');
     })->name('pps.index');
+
+    Route::post('/pps', function () {
+        $message = request('message');
+        Pps::create([
+            'message' => $message,
+            'user_id' => auth()->id(),
+        ]);
+    })->name('pps.store');
     
     Route::get('/pps/{pps}', function ($pps = null) {
         if ($pps === '-1') {
