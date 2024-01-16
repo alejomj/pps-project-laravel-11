@@ -75,6 +75,11 @@ class PpsController extends Controller
      */
     public function destroy(Pps $pps)
     {
-        //
+        $this->authorize('delete', $pps);
+
+        $pps->delete();
+
+        return to_route('pps.index')
+            ->with('status', __('Pps removed!'));
     }
 }

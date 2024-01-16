@@ -60,9 +60,9 @@
                                 <x-dropdown-link :href="route('pps.edit', $pps)">
                                     {{ __('Edit Pps') }}
                                 </x-dropdown-link>
-                                <form method="POST" action="{{ route('pps.edit', $pps) }}">
+                                <form method="POST" action="{{ route('pps.destroy', $pps) }}">
                                     @csrf @method('DELETE')
-                                    <x-dropdown-link :href="route('pps.edit', $pps)" onclick="event.preventDefault(); this.closest('form').submit();">
+                                    <x-dropdown-link :href="route('pps.destroy', $pps)" onclick="event.preventDefault(); this.closest('form').submit();">
                                         {{ __('Delete Pps') }}
                                     </x-dropdown-link>
                                 </form>

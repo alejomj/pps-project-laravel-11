@@ -36,7 +36,9 @@ Route::middleware('auth')->group(function () {
 
     Route::put('/pps/{pps}/update', [PpsController::class, 'update'])
         ->name('pps.update');
-    
+
+    Route::delete('/pps/{pps}', [PpsController::class, 'destroy'])
+        ->name('pps.destroy');
 });
 
 require __DIR__.'/auth.php';
